@@ -6,7 +6,7 @@ import { CONTACT } from "@/components/site/content";
 
 const title = "Kontakt – kostnadsfri bedömning av ert garage | Garageverket";
 const description =
-  "Kontakta Garageverket för en kostnadsfri bedömning och offert på rengöring, uppfräschning och underhåll av garage och parkeringsanläggningar.";
+  "Kontakta Garageverket för en kostnadsfri bedömning och offert på rengöring, uppfräschning och underhåll av garage och parkeringsanläggningar – för fastigheter, företag, parkeringsbolag och föreningar.";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -35,7 +35,7 @@ function ContactPage() {
     <SiteLayout>
       <PageHero
         eyebrow="Kontakt"
-        title="Behöver ert garage en uppfräschning?"
+        title="Behöver ni hjälp med ett garage eller en parkeringsanläggning?"
         text="Kontakta Garageverket för en kostnadsfri bedömning och offert."
       />
 
@@ -90,6 +90,10 @@ function ContactPage() {
                 <select id="typ" name="typ" className={field} defaultValue="">
                   <option value="" disabled>Välj</option>
                   <option>BRF-garage</option>
+                  <option>Kommersiell fastighet</option>
+                  <option>Kontorsfastighet</option>
+                  <option>Köpcentrum/handel</option>
+                  <option>Industri eller lager</option>
                   <option>Underjordiskt garage</option>
                   <option>Parkeringshus</option>
                   <option>Markparkering</option>

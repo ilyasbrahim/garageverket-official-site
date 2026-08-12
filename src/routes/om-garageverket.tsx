@@ -4,7 +4,7 @@ import { CtaBand } from "@/components/site/Cta";
 
 const title = "Om Garageverket – svenskt företag för garageunderhåll | Garageverket";
 const description =
-  "Garageverket är ett svenskt företag med fokus på garage, parkeringsanläggningar och fastighetsnära underhåll. Tydlig kommunikation och noggrant arbete.";
+  "Garageverket är ett svenskt företag med fokus på garage, parkeringsanläggningar och fastighetsnära underhåll för fastighetsägare, förvaltare, företag och föreningar.";
 
 export const Route = createFileRoute("/om-garageverket")({
   head: () => ({
@@ -50,8 +50,9 @@ function AboutPage() {
           fastighetsnära underhåll.
         </p>
         <p className="mt-5 text-muted-foreground">
-          Vårt mål är enkelt: att göra det enklare för fastighetsägare och BRF:er att hålla sina
-          garage rena, välskötta och representativa.
+          Vårt mål är enkelt: att göra det enklare för fastighetsägare, förvaltare, parkeringsbolag,
+          företag och föreningar att hålla sina garage och parkeringsytor rena, välskötta och
+          representativa.
         </p>
         <p className="mt-5 text-muted-foreground">
           Vi tror på tydlig kommunikation, noggrant arbete och lösningar som är anpassade efter

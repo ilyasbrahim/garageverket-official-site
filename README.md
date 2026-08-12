@@ -722,7 +722,7 @@ Skapa:
 
 - Local SEO-struktur
 
-Optimera även för sökningar i Skåne och södra Sverige.
+Optimera även för sökningar i Storstockholm.
 
 Överoptimera inte.
 

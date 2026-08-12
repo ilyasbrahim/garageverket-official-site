@@ -13,10 +13,9 @@ import heroGarage from "@/assets/hero-garage.jpg";
 import maskinsopning from "@/assets/maskinsopning.jpg";
 import brfGarage from "@/assets/brf-garage.jpg";
 
-const title =
-  "Garagerengöring och garageunderhåll för fastigheter och företag | Garageverket";
+const title = "Garagerengöring och garageunderhåll för fastigheter och företag | Garageverket";
 const description =
-  "Garageverket erbjuder garagerengöring, maskinsopning, våtrengöring, målning och parkeringslinjer för fastighetsägare, förvaltare, parkeringsbolag, företag och BRF:er i Skåne och södra Sverige.";
+  "Garageverket erbjuder garagerengöring, maskinsopning, våtrengöring, målning och parkeringslinjer för fastighetsägare, förvaltare, parkeringsbolag, företag och BRF:er i Storstockholm.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,10 +38,7 @@ export const Route = createFileRoute("/")({
           name: "Garageverket",
           slogan: "Rengöring • Underhåll • Förnyelse",
           description,
-          areaServed: [
-            { "@type": "AdministrativeArea", name: "Skåne" },
-            { "@type": "AdministrativeArea", name: "Södra Sverige" },
-          ],
+          areaServed: [{ "@type": "AdministrativeArea", name: "Storstockholm" }],
           knowsAbout: [
             "garagerengöring",
             "garagestädning",
@@ -126,8 +122,8 @@ function Index() {
             Professionell rengöring, underhåll och förnyelse av garage och parkeringsanläggningar.
           </p>
           <p className="mt-4 max-w-2xl text-graphite-foreground/65">
-            Garageverket hjälper fastighetsägare, förvaltare, parkeringsbolag, företag och
-            BRF:er att hålla garage och parkeringsanläggningar rena, välskötta och representativa.
+            Garageverket hjälper fastighetsägare, förvaltare, parkeringsbolag, företag och BRF:er
+            att hålla garage och parkeringsanläggningar rena, välskötta och representativa.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <CtaButton>Be om kostnadsfri bedömning</CtaButton>
@@ -231,9 +227,9 @@ function Index() {
           För fastigheter och parkeringsanläggningar
         </h2>
         <p className="mt-5 max-w-3xl text-muted-foreground">
-          Garageverket arbetar med garage och parkeringsytor för en rad olika typer av
-          verksamheter och fastigheter. Oavsett om ni ansvarar för ett mindre garage eller en
-          större parkeringsanläggning anpassar vi arbetet efter era behov.
+          Garageverket arbetar med garage och parkeringsytor för en rad olika typer av verksamheter
+          och fastigheter. Oavsett om ni ansvarar för ett mindre garage eller en större
+          parkeringsanläggning anpassar vi arbetet efter era behov.
         </p>
         <div className="mt-10 grid gap-px overflow-hidden rounded-sm bg-border sm:grid-cols-2 lg:grid-cols-3">
           {SEGMENTS.map((seg) => (
@@ -321,8 +317,8 @@ function Index() {
               och välskötta.
             </p>
             <p className="mt-4 text-muted-foreground">
-              Vi kan hjälpa till med återkommande rengöring och planerade underhållsinsatser
-              utifrån anläggningens behov.
+              Vi kan hjälpa till med återkommande rengöring och planerade underhållsinsatser utifrån
+              anläggningens behov.
             </p>
             <CtaButton className="mt-8">Fråga om underhållsavtal</CtaButton>
           </div>
@@ -357,8 +353,7 @@ function Index() {
           </p>
           <p className="mt-4 text-muted-foreground">
             Vårt mål är enkelt: att göra det enklare för fastighetsägare, förvaltare, företag och
-            föreningar att hålla sina garage och parkeringsytor rena, välskötta och
-            representativa.
+            föreningar att hålla sina garage och parkeringsytor rena, välskötta och representativa.
           </p>
           <p className="mt-4 text-muted-foreground">
             Vi tror på tydlig kommunikation, noggrant arbete och lösningar som är anpassade efter

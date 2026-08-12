@@ -114,10 +114,7 @@ export const FAQ = [
 ];
 
 export const CONTACT = {
-  phone: "[TELEFONNUMMER]",
-  email: "[E-POST]",
-  legalName: "[JURIDISKT FÖRETAGSNAMN]",
-  orgNr: "[ORG.NUMMER]",
+  email: "info@garageverket.se",
 };
 export const SEGMENTS = [
   {

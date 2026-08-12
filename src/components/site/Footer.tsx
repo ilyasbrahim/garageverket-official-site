@@ -45,13 +45,11 @@ export function Footer() {
         <div>
           <h2 className="eyebrow text-accent">Kontakt</h2>
           <ul className="mt-4 space-y-2 text-sm text-graphite-foreground/80">
-            <li>Telefon: {CONTACT.phone}</li>
-            <li>E-post: {CONTACT.email}</li>
-          </ul>
-          <h2 className="eyebrow mt-8 text-accent">Företagsinformation</h2>
-          <ul className="mt-4 space-y-2 text-sm text-graphite-foreground/80">
-            <li>{CONTACT.legalName}</li>
-            <li>Org.nr: {CONTACT.orgNr}</li>
+            <li>
+              <a href={`mailto:${CONTACT.email}`} className="hover:text-accent">
+                E-post: {CONTACT.email}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

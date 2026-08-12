@@ -56,7 +56,7 @@ function AboutPage() {
         </p>
         <p className="mt-5 text-muted-foreground">
           Vi tror på tydlig kommunikation, noggrant arbete och lösningar som är anpassade efter
-          varje anläggning. Vi är verksamma i Skåne och södra Sverige.
+          varje anläggning. Vi är verksamma i Storstockholm.
         </p>
       </section>
 

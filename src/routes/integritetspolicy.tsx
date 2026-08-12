@@ -27,17 +27,9 @@ function PrivacyPage() {
     <SiteLayout>
       <PageHero eyebrow="Juridisk information" title="Integritetspolicy och cookies" />
       <section className="section-x max-w-3xl space-y-8 py-16 md:py-24">
-        <p className="rounded-sm border border-border bg-secondary p-4 text-sm text-muted-foreground">
-          Innehållet nedan är en grundstruktur med platshållare. Uppgifterna kompletteras när
-          företagsinformationen är fastställd.
-        </p>
-
         <div>
           <h2 className="text-xl font-bold">Personuppgiftsansvarig</h2>
-          <p className="mt-3 text-muted-foreground">
-            {CONTACT.legalName}, org.nr {CONTACT.orgNr}. Kontakt: {CONTACT.email},{" "}
-            {CONTACT.phone}.
-          </p>
+          <p className="mt-3 text-muted-foreground">Garageverket. Kontakt: {CONTACT.email}.</p>
         </div>
 
         <div>
@@ -61,8 +53,8 @@ function PrivacyPage() {
           <h2 className="text-xl font-bold">Cookies</h2>
           <p className="mt-3 text-muted-foreground">
             Webbplatsen använder i grundutförandet endast cookies som är nödvändiga för att sidan
-            ska fungera. Om analys- eller marknadsföringscookies läggs till kompletteras
-            webbplatsen med en cookiebanner där samtycke kan lämnas och återkallas.
+            ska fungera. Om analys- eller marknadsföringscookies läggs till kompletteras webbplatsen
+            med en cookiebanner där samtycke kan lämnas och återkallas.
           </p>
         </div>
 

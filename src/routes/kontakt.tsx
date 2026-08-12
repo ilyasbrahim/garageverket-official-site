@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Phone, Mail } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { Mail } from "lucide-react";
 import { SiteLayout, PageHero } from "@/components/site/Layout";
 import { CONTACT } from "@/components/site/content";
+import { sendContactRequest } from "@/lib/contact";
 
 const title = "Kontakt – kostnadsfri bedömning av ert garage | Garageverket";
 const description =
@@ -30,6 +31,41 @@ const labelCls = "block text-sm font-medium";
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError("");
+    setIsSending(true);
+
+    const form = new FormData(event.currentTarget);
+    try {
+      await sendContactRequest({
+        data: {
+          namn: String(form.get("namn") ?? ""),
+          foretag: String(form.get("foretag") ?? ""),
+          epost: String(form.get("epost") ?? ""),
+          telefon: String(form.get("telefon") ?? ""),
+          adress: String(form.get("adress") ?? ""),
+          ort: String(form.get("ort") ?? ""),
+          typ: String(form.get("typ") ?? ""),
+          storlek: String(form.get("storlek") ?? ""),
+          platser: String(form.get("platser") ?? ""),
+          tid: String(form.get("tid") ?? ""),
+          behov: String(form.get("behov") ?? ""),
+          website: String(form.get("website") ?? ""),
+        },
+      });
+      setSent(true);
+    } catch (submitError) {
+      setError(
+        submitError instanceof Error ? submitError.message : "Något gick fel. Försök igen senare.",
+      );
+    } finally {
+      setIsSending(false);
+    }
+  }
 
   return (
     <SiteLayout>
@@ -54,41 +90,68 @@ function ContactPage() {
               </p>
             </div>
           ) : (
-            <form
-              className="mt-8 grid gap-6 sm:grid-cols-2"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
+            <form className="mt-8 grid gap-6 sm:grid-cols-2" onSubmit={handleSubmit}>
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Webbplats</label>
+                <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <div>
-                <label className={labelCls} htmlFor="namn">Namn</label>
+                <label className={labelCls} htmlFor="namn">
+                  Namn
+                </label>
                 <input id="namn" name="namn" required autoComplete="name" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="foretag">Företag/Förening</label>
+                <label className={labelCls} htmlFor="foretag">
+                  Företag/Förening
+                </label>
                 <input id="foretag" name="foretag" autoComplete="organization" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="epost">E-post</label>
-                <input id="epost" name="epost" type="email" required autoComplete="email" className={field} />
+                <label className={labelCls} htmlFor="epost">
+                  E-post
+                </label>
+                <input
+                  id="epost"
+                  name="epost"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  className={field}
+                />
               </div>
               <div>
-                <label className={labelCls} htmlFor="telefon">Telefonnummer</label>
-                <input id="telefon" name="telefon" type="tel" autoComplete="tel" className={field} />
+                <label className={labelCls} htmlFor="telefon">
+                  Telefonnummer
+                </label>
+                <input
+                  id="telefon"
+                  name="telefon"
+                  type="tel"
+                  autoComplete="tel"
+                  className={field}
+                />
               </div>
               <div>
-                <label className={labelCls} htmlFor="adress">Adress</label>
+                <label className={labelCls} htmlFor="adress">
+                  Adress
+                </label>
                 <input id="adress" name="adress" autoComplete="street-address" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="ort">Ort</label>
+                <label className={labelCls} htmlFor="ort">
+                  Ort
+                </label>
                 <input id="ort" name="ort" autoComplete="address-level2" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="typ">Typ av anläggning</label>
+                <label className={labelCls} htmlFor="typ">
+                  Typ av anläggning
+                </label>
                 <select id="typ" name="typ" className={field} defaultValue="">
-                  <option value="" disabled>Välj</option>
+                  <option value="" disabled>
+                    Välj
+                  </option>
                   <option>BRF-garage</option>
                   <option>Kommersiell fastighet</option>
                   <option>Kontorsfastighet</option>
@@ -102,39 +165,42 @@ function ContactPage() {
                 </select>
               </div>
               <div>
-                <label className={labelCls} htmlFor="storlek">Ungefärlig storlek (kvm)</label>
+                <label className={labelCls} htmlFor="storlek">
+                  Ungefärlig storlek (kvm)
+                </label>
                 <input id="storlek" name="storlek" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="platser">Antal parkeringsplatser</label>
+                <label className={labelCls} htmlFor="platser">
+                  Antal parkeringsplatser
+                </label>
                 <input id="platser" name="platser" inputMode="numeric" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="tid">Önskad tidsperiod</label>
+                <label className={labelCls} htmlFor="tid">
+                  Önskad tidsperiod
+                </label>
                 <input id="tid" name="tid" placeholder="T.ex. under våren" className={field} />
               </div>
               <div className="sm:col-span-2">
-                <label className={labelCls} htmlFor="behov">Vilken hjälp behövs?</label>
+                <label className={labelCls} htmlFor="behov">
+                  Vilken hjälp behövs?
+                </label>
                 <textarea id="behov" name="behov" rows={5} className={field} />
-              </div>
-              <div className="sm:col-span-2">
-                <label className={labelCls} htmlFor="bilder">Bifoga bilder (valfritt)</label>
-                <input
-                  id="bilder"
-                  name="bilder"
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  className={`${field} file:mr-3 file:rounded-sm file:border-0 file:bg-secondary file:px-3 file:py-1.5 file:text-sm`}
-                />
               </div>
               <div className="sm:col-span-2">
                 <button
                   type="submit"
+                  disabled={isSending}
                   className="eyebrow w-full rounded-sm bg-accent px-6 py-4 text-accent-foreground transition-colors hover:bg-accent/85 sm:w-auto"
                 >
-                  Skicka förfrågan
+                  {isSending ? "Skickar…" : "Skicka förfrågan"}
                 </button>
+                {error && (
+                  <p className="mt-3 text-sm text-destructive" role="alert">
+                    {error}
+                  </p>
+                )}
                 <p className="mt-3 text-xs text-muted-foreground">
                   Uppgifterna används endast för att kunna svara på er förfrågan.
                 </p>
@@ -150,21 +216,14 @@ function ContactPage() {
           </h2>
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex items-center gap-3">
-              <Phone className="size-4 text-accent" aria-hidden="true" />
-              {CONTACT.phone}
-            </li>
-            <li className="flex items-center gap-3">
               <Mail className="size-4 text-accent" aria-hidden="true" />
-              {CONTACT.email}
+              <a href={`mailto:${CONTACT.email}`} className="hover:text-accent">
+                {CONTACT.email}
+              </a>
             </li>
           </ul>
           <p className="mt-6 text-sm text-graphite-foreground/70">
-            Vi arbetar med garage och parkeringsanläggningar i Skåne och södra Sverige.
-          </p>
-          <p className="mt-6 border-t border-graphite-foreground/15 pt-6 text-xs text-graphite-foreground/60">
-            {CONTACT.legalName}
-            <br />
-            Org.nr: {CONTACT.orgNr}
+            Vi arbetar med garage och parkeringsanläggningar i Storstockholm.
           </p>
         </aside>
       </section>

@@ -7,7 +7,7 @@ import pelare from "@/assets/pelare-markeringar.jpg";
 
 const title = "Tjänster – garagerengöring, maskinsopning och parkeringslinjer | Garageverket";
 const description =
-  "Garagerengöring, maskinsopning, våtrengöring, målning, parkeringslinjer och garageunderhåll för BRF:er, fastighetsägare och parkeringsanläggningar.";
+  "Garagerengöring, maskinsopning, våtrengöring, målning, parkeringslinjer och garageunderhåll för fastighetsägare, förvaltare, parkeringsbolag, företag och BRF:er.";
 
 export const Route = createFileRoute("/tjanster")({
   head: () => ({
@@ -31,11 +31,16 @@ function TjansterPage() {
       <PageHero
         eyebrow="Tjänster"
         title="Våra tjänster"
-        text="Från rengöring till uppfräschning och underhåll – vi anpassar arbetet efter ert garage."
+        text="Från rengöring till uppfräschning och underhåll – vi anpassar arbetet efter ert garage eller er parkeringsanläggning."
       />
 
       <section className="section-x py-16 md:py-24">
-        <div className="grid gap-px overflow-hidden rounded-sm bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <p className="max-w-3xl text-lg text-muted-foreground">
+          Behöver ni endast en grundlig rengöring? Eller behöver hela parkeringsanläggningen
+          fräschas upp med nya linjer, målning och underhåll? Tjänsterna kan kombineras fritt – vi
+          anpassar omfattningen efter anläggningens behov.
+        </p>
+        <div className="mt-10 grid gap-px overflow-hidden rounded-sm bg-border sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((s, i) => (
             <article key={s.slug} className="group bg-card p-7">
               <span className="font-display text-sm font-bold text-muted-foreground">
@@ -81,8 +86,8 @@ function TjansterPage() {
       </section>
 
       <CtaBand
-        title="Behöver ert garage en uppfräschning?"
-        text="Kontakta oss så tittar vi på anläggningens behov och lämnar en tydlig offert."
+        title="Behöver ni hjälp med ett garage eller en parkeringsanläggning?"
+        text="Kontakta oss för en kostnadsfri bedömning – vi lämnar en tydlig offert efter besök på plats."
       />
     </SiteLayout>
   );

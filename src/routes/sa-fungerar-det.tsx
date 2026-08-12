@@ -5,7 +5,7 @@ import { STEPS } from "@/components/site/content";
 
 const title = "Så fungerar det – från bedömning till utfört arbete | Garageverket";
 const description =
-  "Så går det till när Garageverket rengör och underhåller ert garage: kontakt, bedömning på plats, offert, planering och utförande.";
+  "Så går det till när Garageverket rengör och underhåller garage och parkeringsanläggningar: kontakt, bedömning på plats, offert, planering och utförande.";
 
 export const Route = createFileRoute("/sa-fungerar-det")({
   head: () => ({

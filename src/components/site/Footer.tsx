@@ -17,7 +17,7 @@ export function Footer() {
           </p>
           <p className="mt-4 max-w-sm text-sm text-graphite-foreground/70">
             Rengöring, uppfräschning och underhåll av garage och parkeringsanläggningar för
-            BRF:er, fastighetsägare och parkeringsaktörer.
+            fastighetsägare, förvaltare, parkeringsbolag, företag och föreningar.
           </p>
         </div>
 

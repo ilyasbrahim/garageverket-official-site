@@ -1,7 +1,7 @@
 export const NAV = [
   { to: "/", label: "Hem" },
   { to: "/tjanster", label: "Tjänster" },
-  { to: "/for-brf", label: "För BRF" },
+  { to: "/for-fastighetsagare", label: "För fastighetsägare" },
   { to: "/sa-fungerar-det", label: "Så fungerar det" },
   { to: "/om-garageverket", label: "Om Garageverket" },
   { to: "/kontakt", label: "Kontakt" },
@@ -119,3 +119,41 @@ export const CONTACT = {
   legalName: "[JURIDISKT FÖRETAGSNAMN]",
   orgNr: "[ORG.NUMMER]",
 };
+export const SEGMENTS = [
+  {
+    title: "BRF & bostadsrättsföreningar",
+    text: "Rengöring, underhåll och uppfräschning av gemensamma garage och parkeringsytor.",
+  },
+  {
+    title: "Fastighetsägare & förvaltare",
+    text: "Underhåll av garage och parkeringsanläggningar som en del av fastighetens löpande skötsel.",
+  },
+  {
+    title: "Parkeringsbolag",
+    text: "Rengöring, markeringar och underhåll för parkeringsanläggningar.",
+  },
+  {
+    title: "Företag & verksamheter",
+    text: "Underhåll av personal-, kund- och besöksparkeringar samt egna garage.",
+  },
+  {
+    title: "Kommersiella fastigheter",
+    text: "Rengöring och uppfräschning av parkeringsytor och garage vid exempelvis kontor, handel och andra kommersiella fastigheter.",
+  },
+  {
+    title: "Industri & lager",
+    text: "Underhåll av garage, lastytor och parkeringsområden vid industri- och lagerfastigheter.",
+  },
+];
+
+export const ASSIGNMENTS = [
+  "Enstaka garagerengöring",
+  "Våtrengöring",
+  "Förnyelse av parkeringslinjer",
+  "Målning och uppfräschning",
+  "Pelar- och kantmarkeringar",
+  "Inför försäljning eller visning av fastighet",
+  "Inför eller efter renovering",
+  "Återkommande underhåll",
+  "Större uppfräschningsprojekt",
+];

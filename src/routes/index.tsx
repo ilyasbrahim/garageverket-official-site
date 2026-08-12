@@ -8,14 +8,15 @@ import {
 } from "@/components/ui/accordion";
 import { SiteLayout } from "@/components/site/Layout";
 import { CtaBand, CtaButton } from "@/components/site/Cta";
-import { FAQ, SERVICES, STEPS } from "@/components/site/content";
+import { ASSIGNMENTS, FAQ, SEGMENTS, SERVICES, STEPS } from "@/components/site/content";
 import heroGarage from "@/assets/hero-garage.jpg";
 import maskinsopning from "@/assets/maskinsopning.jpg";
 import brfGarage from "@/assets/brf-garage.jpg";
 
-const title = "Garagerengöring och garageunderhåll för BRF och fastighetsägare | Garageverket";
+const title =
+  "Garagerengöring och garageunderhåll för fastigheter och företag | Garageverket";
 const description =
-  "Garageverket erbjuder garagerengöring, maskinsopning, våtrengöring, målning och parkeringslinjer för BRF:er, fastighetsägare och parkeringsanläggningar i Skåne och södra Sverige.";
+  "Garageverket erbjuder garagerengöring, maskinsopning, våtrengöring, målning och parkeringslinjer för fastighetsägare, förvaltare, parkeringsbolag, företag och BRF:er i Skåne och södra Sverige.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,10 +46,19 @@ export const Route = createFileRoute("/")({
           knowsAbout: [
             "garagerengöring",
             "garagestädning",
+            "garagesopning",
             "maskinsopning",
             "våtrengöring garage",
+            "rengöring parkeringsgarage",
+            "rengöring parkeringsanläggning",
+            "underhåll parkeringsgarage",
+            "garageunderhåll företag",
+            "parkeringsunderhåll",
             "parkeringslinjer",
-            "garageunderhåll",
+            "parkeringsmålning",
+            "målning parkeringsgarage",
+            "fastighetsunderhåll garage",
+            "parkeringsgarage service",
           ],
         }),
       },
@@ -70,7 +80,7 @@ export const Route = createFileRoute("/")({
 });
 
 const flow = ["Rengöring", "Uppfräschning", "Parkeringsmarkering", "Underhåll"];
-const brfPoints = [
+const points = [
   "Kostnadsfri bedömning",
   "Tydlig offert",
   "Anpassade lösningar",
@@ -116,8 +126,8 @@ function Index() {
             Professionell rengöring, underhåll och förnyelse av garage och parkeringsanläggningar.
           </p>
           <p className="mt-4 max-w-2xl text-graphite-foreground/65">
-            Garageverket hjälper BRF:er, fastighetsägare och parkeringsaktörer att hålla sina
-            garage rena, välskötta och representativa.
+            Garageverket hjälper fastighetsägare, förvaltare, parkeringsbolag, företag och
+            BRF:er att hålla garage och parkeringsanläggningar rena, välskötta och representativa.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <CtaButton>Be om kostnadsfri bedömning</CtaButton>
@@ -155,6 +165,11 @@ function Index() {
           <p className="mt-4 max-w-2xl text-muted-foreground">
             Från rengöring till uppfräschning och underhåll – vi anpassar arbetet efter ert garage.
           </p>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Behöver ni endast en grundlig rengöring? Eller behöver hela parkeringsanläggningen
+            fräschas upp med nya linjer, målning och underhåll? Tjänsterna kan kombineras och vi
+            anpassar omfattningen efter anläggningens behov.
+          </p>
           <div className="mt-10 grid gap-px overflow-hidden rounded-sm bg-border sm:grid-cols-2 lg:grid-cols-4">
             {SERVICES.map((s) => (
               <article key={s.slug} className="bg-card p-7">
@@ -170,8 +185,8 @@ function Index() {
       </section>
 
       <CtaBand
-        title="Behöver ert garage en uppfräschning?"
-        text="Vi tittar på anläggningens behov och lämnar en tydlig offert."
+        title="Behöver ni hjälp med ett garage eller en parkeringsanläggning?"
+        text="Kontakta oss för en kostnadsfri bedömning – vi tittar på anläggningens behov och lämnar en tydlig offert."
       />
 
       {/* FLERA LÖSNINGAR */}
@@ -209,37 +224,68 @@ function Index() {
         </ol>
       </section>
 
-      {/* FÖR BRF */}
+      {/* VEM VI HJÄLPER */}
+      <section className="section-x py-16 md:py-24">
+        <span className="eyebrow text-muted-foreground">Vem vi hjälper</span>
+        <h2 className="mt-4 text-2xl font-bold md:text-4xl">
+          För fastigheter och parkeringsanläggningar
+        </h2>
+        <p className="mt-5 max-w-3xl text-muted-foreground">
+          Garageverket arbetar med garage och parkeringsytor för en rad olika typer av
+          verksamheter och fastigheter. Oavsett om ni ansvarar för ett mindre garage eller en
+          större parkeringsanläggning anpassar vi arbetet efter era behov.
+        </p>
+        <div className="mt-10 grid gap-px overflow-hidden rounded-sm bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {SEGMENTS.map((seg) => (
+            <article key={seg.title} className="bg-card p-7">
+              <span className="block h-1 w-10 bg-accent" aria-hidden="true" />
+              <h3 className="mt-4 font-display text-base font-bold uppercase tracking-wide">
+                {seg.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{seg.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* OLIKA TYPER AV UPPDRAG */}
       <section className="border-y border-border bg-secondary py-16 md:py-24">
         <div className="section-x grid items-center gap-12 md:grid-cols-2">
-          <img
-            src={brfGarage}
-            alt="Bostadsrättsförening med garageplatser under huset i ett svenskt bostadsområde"
-            width={1280}
-            height={960}
-            loading="lazy"
-            className="rounded-sm object-cover"
-          />
           <div>
-            <span className="eyebrow text-muted-foreground">För BRF</span>
-            <h2 className="mt-4 text-2xl font-bold md:text-4xl">Garageunderhåll för BRF:er</h2>
+            <span className="eyebrow text-muted-foreground">Uppdrag</span>
+            <h2 className="mt-4 text-2xl font-bold md:text-4xl">
+              Från enstaka insatser till löpande underhåll
+            </h2>
             <p className="mt-5 text-muted-foreground">
-              Som styrelse behöver ni kunna få tydliga besked, tydliga offerter och ett arbete som
-              blir gjort enligt överenskommelse.
+              Vi tar både mindre och större uppdrag. Det kan handla om en enstaka rengöring,
+              förnyelse av parkeringslinjer eller ett mer omfattande underhållsprojekt.
             </p>
-            <p className="mt-4 text-muted-foreground">
-              Garageverket hjälper bostadsrättsföreningar med rengöring, uppfräschning och
-              underhåll av garage och parkeringsytor.
-            </p>
-            <ul className="mt-7 space-y-3">
-              {brfPoints.map((p) => (
+            <ul className="mt-8 space-y-3">
+              {points.map((p) => (
                 <li key={p} className="flex items-start gap-3">
                   <Check className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden="true" />
                   <span className="font-medium">{p}</span>
                 </li>
               ))}
             </ul>
-            <CtaButton className="mt-8">Boka en kostnadsfri bedömning</CtaButton>
+            <CtaButton className="mt-8">Be om kostnadsfri bedömning</CtaButton>
+          </div>
+          <div>
+            <img
+              src={brfGarage}
+              alt="Fastighet med garage och parkeringsytor som sköts av Garageverket"
+              width={1280}
+              height={960}
+              loading="lazy"
+              className="rounded-sm object-cover"
+            />
+            <ul className="mt-6 grid gap-px overflow-hidden rounded-sm bg-border sm:grid-cols-2">
+              {ASSIGNMENTS.map((a) => (
+                <li key={a} className="bg-card px-5 py-3 text-sm font-medium">
+                  {a}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -310,8 +356,9 @@ function Index() {
             fastighetsnära underhåll.
           </p>
           <p className="mt-4 text-muted-foreground">
-            Vårt mål är enkelt: att göra det enklare för fastighetsägare och BRF:er att hålla sina
-            garage rena, välskötta och representativa.
+            Vårt mål är enkelt: att göra det enklare för fastighetsägare, förvaltare, företag och
+            föreningar att hålla sina garage och parkeringsytor rena, välskötta och
+            representativa.
           </p>
           <p className="mt-4 text-muted-foreground">
             Vi tror på tydlig kommunikation, noggrant arbete och lösningar som är anpassade efter

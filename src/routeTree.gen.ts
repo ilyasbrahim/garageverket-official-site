@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ForBrfRouteImport } from './routes/for-brf'
+import { Route as IntegritetspolicyRouteImport } from './routes/integritetspolicy'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as OmGarageverketRouteImport } from './routes/om-garageverket'
+import { Route as SaFungerarDetRouteImport } from './routes/sa-fungerar-det'
+import { Route as TjansterRouteImport } from './routes/tjanster'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForBrfRoute = ForBrfRouteImport.update({
+  id: '/for-brf',
+  path: '/for-brf',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntegritetspolicyRoute = IntegritetspolicyRouteImport.update({
+  id: '/integritetspolicy',
+  path: '/integritetspolicy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmGarageverketRoute = OmGarageverketRouteImport.update({
+  id: '/om-garageverket',
+  path: '/om-garageverket',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SaFungerarDetRoute = SaFungerarDetRouteImport.update({
+  id: '/sa-fungerar-det',
+  path: '/sa-fungerar-det',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TjansterRoute = TjansterRouteImport.update({
+  id: '/tjanster',
+  path: '/tjanster',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/for-brf': typeof ForBrfRoute
+  '/integritetspolicy': typeof IntegritetspolicyRoute
+  '/kontakt': typeof KontaktRoute
+  '/om-garageverket': typeof OmGarageverketRoute
+  '/sa-fungerar-det': typeof SaFungerarDetRoute
+  '/tjanster': typeof TjansterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/for-brf': typeof ForBrfRoute
+  '/integritetspolicy': typeof IntegritetspolicyRoute
+  '/kontakt': typeof KontaktRoute
+  '/om-garageverket': typeof OmGarageverketRoute
+  '/sa-fungerar-det': typeof SaFungerarDetRoute
+  '/tjanster': typeof TjansterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/for-brf': typeof ForBrfRoute
+  '/integritetspolicy': typeof IntegritetspolicyRoute
+  '/kontakt': typeof KontaktRoute
+  '/om-garageverket': typeof OmGarageverketRoute
+  '/sa-fungerar-det': typeof SaFungerarDetRoute
+  '/tjanster': typeof TjansterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/for-brf'
+    | '/integritetspolicy'
+    | '/kontakt'
+    | '/om-garageverket'
+    | '/sa-fungerar-det'
+    | '/tjanster'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/for-brf'
+    | '/integritetspolicy'
+    | '/kontakt'
+    | '/om-garageverket'
+    | '/sa-fungerar-det'
+    | '/tjanster'
+  id:
+    | '__root__'
+    | '/'
+    | '/for-brf'
+    | '/integritetspolicy'
+    | '/kontakt'
+    | '/om-garageverket'
+    | '/sa-fungerar-det'
+    | '/tjanster'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForBrfRoute: typeof ForBrfRoute
+  IntegritetspolicyRoute: typeof IntegritetspolicyRoute
+  KontaktRoute: typeof KontaktRoute
+  OmGarageverketRoute: typeof OmGarageverketRoute
+  SaFungerarDetRoute: typeof SaFungerarDetRoute
+  TjansterRoute: typeof TjansterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +130,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/for-brf': {
+      id: '/for-brf'
+      path: '/for-brf'
+      fullPath: '/for-brf'
+      preLoaderRoute: typeof ForBrfRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/integritetspolicy': {
+      id: '/integritetspolicy'
+      path: '/integritetspolicy'
+      fullPath: '/integritetspolicy'
+      preLoaderRoute: typeof IntegritetspolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-garageverket': {
+      id: '/om-garageverket'
+      path: '/om-garageverket'
+      fullPath: '/om-garageverket'
+      preLoaderRoute: typeof OmGarageverketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sa-fungerar-det': {
+      id: '/sa-fungerar-det'
+      path: '/sa-fungerar-det'
+      fullPath: '/sa-fungerar-det'
+      preLoaderRoute: typeof SaFungerarDetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tjanster': {
+      id: '/tjanster'
+      path: '/tjanster'
+      fullPath: '/tjanster'
+      preLoaderRoute: typeof TjansterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForBrfRoute: ForBrfRoute,
+  IntegritetspolicyRoute: IntegritetspolicyRoute,
+  KontaktRoute: KontaktRoute,
+  OmGarageverketRoute: OmGarageverketRoute,
+  SaFungerarDetRoute: SaFungerarDetRoute,
+  TjansterRoute: TjansterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

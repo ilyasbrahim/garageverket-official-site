@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Garageverket rengör, fräschar upp och underhåller garage och parkeringsanläggningar för BRF:er och fastighetsägare.",
+          "Garageverket rengör, fräschar upp och underhåller garage och parkeringsanläggningar för fastighetsägare, företag, parkeringsaktörer och föreningar.",
       },
       { property: "og:site_name", content: "Garageverket" },
       { property: "og:locale", content: "sv_SE" },

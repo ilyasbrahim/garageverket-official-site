@@ -66,7 +66,7 @@ function ContactPage() {
                 <input id="namn" name="namn" required autoComplete="name" className={field} />
               </div>
               <div>
-                <label className={labelCls} htmlFor="foretag">BRF/Företag</label>
+                <label className={labelCls} htmlFor="foretag">Företag/Förening</label>
                 <input id="foretag" name="foretag" autoComplete="organization" className={field} />
               </div>
               <div>

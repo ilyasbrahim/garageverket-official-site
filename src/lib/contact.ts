@@ -1,4 +1,3 @@
-import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -18,61 +17,16 @@ const contactSchema = z.object({
 
 type ContactRequest = z.infer<typeof contactSchema>;
 
-function formatEmail(data: ContactRequest) {
-  const fields: Array<[string, string | undefined]> = [
-    ["Namn", data.namn],
-    ["Företag/förening", data.foretag],
-    ["E-post", data.epost],
-    ["Telefon", data.telefon],
-    ["Adress", data.adress],
-    ["Ort", data.ort],
-    ["Typ av anläggning", data.typ],
-    ["Ungefärlig storlek", data.storlek],
-    ["Antal parkeringsplatser", data.platser],
-    ["Önskad tidsperiod", data.tid],
-    ["Vilken hjälp behövs", data.behov],
-  ];
-
-  return fields
-    .filter(([, value]) => value)
-    .map(([label, value]) => `${label}: ${value}`)
-    .join("\n\n");
-}
-
-export const sendContactRequest = createServerFn({ method: "POST" })
-  .validator(contactSchema)
-  .handler(async ({ data }) => {
-    if (data.website) return { ok: true };
-
-    const apiKey = process.env["RESEND_API_KEY"];
-    const from = process.env["CONTACT_FROM_EMAIL"];
-
-    if (!apiKey || !from) {
-      console.error(
-        "Contact form email is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL.",
-      );
-      throw new Error("Kontaktformuläret är inte konfigurerat ännu.");
-    }
-
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: ["info@garageverket.se"],
-        reply_to: data.epost,
-        subject: `Ny förfrågan från ${data.namn}`,
-        text: formatEmail(data),
-      }),
-    });
-
-    if (!response.ok) {
-      console.error("Resend could not deliver contact request:", await response.text());
-      throw new Error("Det gick inte att skicka förfrågan. Försök igen senare.");
-    }
-
-    return { ok: true };
+export async function sendContactRequest(input: ContactRequest) {
+  const data = contactSchema.parse(input);
+  const response = await fetch("/api/contact.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(data),
   });
+
+  const result = (await response.json().catch(() => null)) as { message?: string } | null;
+  if (!response.ok) {
+    throw new Error(result?.message ?? "Det gick inte att skicka förfrågan. Försök igen senare.");
+  }
+}

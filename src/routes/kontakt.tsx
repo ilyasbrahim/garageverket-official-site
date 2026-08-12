@@ -42,20 +42,18 @@ function ContactPage() {
     const form = new FormData(event.currentTarget);
     try {
       await sendContactRequest({
-        data: {
-          namn: String(form.get("namn") ?? ""),
-          foretag: String(form.get("foretag") ?? ""),
-          epost: String(form.get("epost") ?? ""),
-          telefon: String(form.get("telefon") ?? ""),
-          adress: String(form.get("adress") ?? ""),
-          ort: String(form.get("ort") ?? ""),
-          typ: String(form.get("typ") ?? ""),
-          storlek: String(form.get("storlek") ?? ""),
-          platser: String(form.get("platser") ?? ""),
-          tid: String(form.get("tid") ?? ""),
-          behov: String(form.get("behov") ?? ""),
-          website: String(form.get("website") ?? ""),
-        },
+        namn: String(form.get("namn") ?? ""),
+        foretag: String(form.get("foretag") ?? ""),
+        epost: String(form.get("epost") ?? ""),
+        telefon: String(form.get("telefon") ?? ""),
+        adress: String(form.get("adress") ?? ""),
+        ort: String(form.get("ort") ?? ""),
+        typ: String(form.get("typ") ?? ""),
+        storlek: String(form.get("storlek") ?? ""),
+        platser: String(form.get("platser") ?? ""),
+        tid: String(form.get("tid") ?? ""),
+        behov: String(form.get("behov") ?? ""),
+        website: String(form.get("website") ?? ""),
       });
       setSent(true);
     } catch (submitError) {

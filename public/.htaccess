@@ -1,0 +1,14 @@
+Options -MultiViews
+DirectoryIndex _shell.html
+RewriteEngine On
+
+# Configuration must never be requested directly.
+RewriteRule ^api/config\.php$ - [F,L,NC]
+
+# Keep API requests and existing files/directories intact.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Let React Router render all website paths when a visitor reloads a page.
+RewriteRule ^ _shell.html [L]
